@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
-const userRouter = require("./routes/UserRoutes");
+// const userRouter = require("./routes/UserRoutes");
 
 // Load environment variables from a .env file
 dotenv.config();
@@ -12,21 +12,10 @@ app.use(express.json());
 
 
 // import routes
-const userRoutes = require("./routes/userRoutes");
+// const userRoutes = require("./routes/userRoutes");
 
 // routes
-app.use("/user", userRouter);
-
-
-
-
-
-app.use(express.json());
-app.use(cors());
-
-app.use("/user", userRoutes);
-
-app.use(express.static(path.join(__dirname, "uploads")));
+// app.use("/user", userRouter);
 
 
 
@@ -34,9 +23,27 @@ app.use(express.static(path.join(__dirname, "uploads")));
 
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/pos").then(() => {
-    app.listen(4005, () => {
-        console.log("db conected")
 
-    })
-})
+// app.use(express.static(path.join(__dirname, "uploads")));
+
+
+
+
+
+app.get("/", (req, res) => res.send("application is working"));
+
+const startServer = async () => {
+    try {
+        // mongoose.connect("mongodb://localhost:27017/redux-instagram").then(() => {
+            mongoose.connect(process.env.MONGODB_URL).then(() => {
+            app.listen(process.env.PORT, () => {
+                console.log(`server is listening on port ${process.env.PORT}`);
+            })
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+startServer();
+
