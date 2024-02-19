@@ -1,0 +1,12 @@
+
+body{
+    font-family: "Nunito", sans-serif;
+    background: #f0f3fa !important;
+}
+
+.ant-layout .ant-layout-sider {
+    background: white !important;
+}
+.ant-layout{
+    background: #f0f3fa !important;
+}
