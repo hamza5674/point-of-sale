@@ -4,6 +4,10 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 // const userRouter = require("./routes/UserRoutes");
+// const  productRouter = require("./routes/ProductRoutes") ;
+// const  SaleRouter=require("./route/SaleRoute") 
+// const  ExpensRouter=require("./route/ExpensRoute") 
+// const  CategoryRouter=require("./route/CategoryRoute") 
 
 // Load environment variables from a .env file
 dotenv.config();
@@ -16,6 +20,11 @@ app.use(express.json());
 
 // routes
 // app.use("/user", userRouter);
+// app.use("/product",ProductRouter);
+// app.use("/category",CategoryRouter);
+// app.use("/sale",SaleRouter);
+// app.use("/expens",ExpensRouter);
+// app.use("/category",CategoryRouter);
 
 
 
