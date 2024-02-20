@@ -11,23 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 
-// import routes
-// const userRoutes = require("./routes/userRoutes");
-
-// routes
-// app.use("/user", userRouter);
-
-
-
-
-
-
-
-
-// app.use(express.static(path.join(__dirname, "uploads")));
-
-
-
 
 
 app.get("/", (req, res) => res.send("application is working"));
