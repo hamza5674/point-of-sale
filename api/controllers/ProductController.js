@@ -25,14 +25,18 @@ console.log('22222')
         console.log("before")
 
         const newproduct = await Product.create({
-            image:photoObject.url,
-            newproduct:newproduct
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            category: req.body.category,
+            image:photoObject.url, 
+            quantity: req.body.quantity
+        
         });
-
         return res.status(200).json({
             status: 'success',
             message: "successfully created",
-            newlyPost: newPost
+            newproduct: newproduct
         })
     } catch (error) {
         console.log(error.message);
@@ -41,11 +45,11 @@ console.log('22222')
 
 const getall = async (req, res) => {
     try {
-        const product = await Product.find({}).populate({
+        const product = await Product.find({})
             // path: "authorId",
             //select: "name", // Only include 'name' field from User collection
             //match: { $exists: true }
-          }).sort({createdAt: -1})
+        .sort({createdAt: -1})
           
         return res.status(200).json({
             status: "success",

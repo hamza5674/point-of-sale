@@ -8,16 +8,12 @@ const saleschema = new mongoose.Schema({
         required: true
     },
     product: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Product',
         required: true,
         unique: true
     },
-    category: {
-        type: mongoose.Schema.Type.ObjectId,
-        ref: 'Category',
-        required: true
-    },
+    category:String,
     quantity: {
         type: String,
         required: true

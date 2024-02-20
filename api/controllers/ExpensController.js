@@ -1,37 +1,37 @@
 const Expens = require("../models/Expens")
 
 
-// create category
+// create expense
 
 const expenscreate = async (req, res) => {
-console.log('22222')
+    console.log('22222')
 
     try {
 
-        const newexpens = await Expens.create({       
-            newexpens:newexpens
+        const newexpens = await Expens.create({
+            amount: req.body.amount
         });
 
         return res.status(200).json({
             status: 'success',
             message: "successfully created",
-            newexpens:newexpens
+            newexpens: newexpens
         })
     } catch (error) {
         console.log(error.message);
     }
 }
-//get all category
+//get all expense
 
 const getall = async (req, res) => {
     try {
-         await Expens.find({})
-        .sort({createdAt: -1})
+        const expens = await Expens.find({})
+            .sort({ createdAt: -1 })
 
-     
+
         return res.status(200).json({
             status: "success",
-            Expens: Expens
+            expens: expens
         });
     } catch (error) {
         console.log(error.message);

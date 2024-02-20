@@ -3,12 +3,19 @@ const Sales = require("../models/Sales")
 
 
 const salecreate = async (req, res) => {
-console.log('22222')
+    console.log('22222')
 
     try {
 
-        const newsale = await Sales.create({       
-            newsale:newsale
+        const newsale = await Sales.create({
+            customer: req.body.customer,
+            product: req.body.product,
+            quantity: req.body.quantity,
+            price: req.body.price,
+            category: req.body.category,
+            discount: req.body.discount,
+            total: req.body.total,
+            order: req.body.order
         });
 
         return res.status(200).json({
@@ -25,9 +32,10 @@ console.log('22222')
 const getall = async (req, res) => {
     try {
         const sale = await Sales.find({})
-        .sort({createdAt: -1})
 
-     
+            .sort({ createdAt: -1 })
+
+
         return res.status(200).json({
             status: "success",
             sale: sale
