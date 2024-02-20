@@ -1,31 +1,30 @@
-const Category = require("../models/Category")
+const Sales = require("../models/Sales")
 
 
-// create category
 
-const categorycreate = async (req, res) => {
+const salecreate = async (req, res) => {
 console.log('22222')
 
     try {
 
-        const newcategory = await Category.create({       
-            newcategory:newcategory
+        const newsale = await Sales.create({       
+            newsale:newsale
         });
 
         return res.status(200).json({
             status: 'success',
             message: "successfully created",
-            newcategory:newcategory
+            newsale: newsale
         })
     } catch (error) {
         console.log(error.message);
     }
 }
-//get all category
+//get all sales
 
 const getall = async (req, res) => {
     try {
-         await Category.find({})
+        const sale = await Sales.find({})
         .sort({createdAt: -1})
 
      
@@ -38,4 +37,4 @@ const getall = async (req, res) => {
     }
 }
 
-module.exports = { categorycreate, getall }
+module.exports = { salecreate, getall }

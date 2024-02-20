@@ -24,12 +24,12 @@ console.log('22222')
         // create post
         console.log("before")
 
-        const newPost = await Product.create({
-            content: req.body.content,
-            imageUrl: photoObject.url,
+        const newproduct = await Product.create({
+            image:photoObject.url,
+            newproduct:newproduct
         });
 
-        return res.status(201).json({
+        return res.status(200).json({
             status: 'success',
             message: "successfully created",
             newlyPost: newPost
@@ -39,37 +39,17 @@ console.log('22222')
     }
 }
 
-// const myPosts = async (req, res) => {
-//     try {
-//         const posts = await PostModel.find({ authorId: req.userId }).populate({
-//             path: "authorId",
-//             //select: "name", // Only include 'name' field from User collection
-//             //match: { $exists: true }
-//         }).sort({ createdAt: -1 })
-//         const filteredPosts = posts.filter(p => p.authorId != null);
-
-//         return res.json({
-//             status: 'success',
-//             posts: filteredPosts
-//         })
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// }
-
 const getall = async (req, res) => {
     try {
-        const product = await Product.find().populate({
+        const product = await Product.find({}).populate({
             // path: "authorId",
             //select: "name", // Only include 'name' field from User collection
             //match: { $exists: true }
           }).sort({createdAt: -1})
-
-        // const filteredPosts = product.filter(p => p.authorId != null);
-
+          
         return res.status(200).json({
             status: "success",
-            product: filteredPosts
+            product: product
         });
     } catch (error) {
         console.log(error.message);
