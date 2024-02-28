@@ -22,7 +22,7 @@ const signup = async (req, res) => {
         const user = await User.create({ name, email, password: hashed });
 
         //  Sending back a response with a status of Created (201) and the newly created
-        res.status(201).json({ name: user.name, email: user.email, token: generateToken(user) });
+       return res.status(201).json({ name: user.name, email: user.email, token: generateToken(user) });
 
     } catch (error) {
         console.log(`Error in SignUp ${error}`);

@@ -11,7 +11,7 @@ const categorycreate = async (req, res) => {
         const newcategory = await Category.create({
             category: req.body.category
         });
-
+        console.log(newcategory);
         return res.status(200).json({
             status: 'success',
             message: "successfully created",
@@ -25,12 +25,12 @@ const categorycreate = async (req, res) => {
 
 const getall = async (req, res) => {
     try {
-        const sale = await Category.find({})
+        const categories = await Category.find({})
             .sort({ createdAt: -1 })
 
         return res.status(200).json({
             status: "success",
-            sale: sale
+            categories: categories
         });
     } catch (error) {
         console.log(error.message);
